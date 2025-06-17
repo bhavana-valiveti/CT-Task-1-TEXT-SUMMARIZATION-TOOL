@@ -1,0 +1,139 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "a27155ee-9747-4400-bf95-2a91609cfdbd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Internship Task1\n",
+    "#TEXT SUMMARIZATION TOOL\n",
+    "#CREATE A TOOL THAT SUMMARIZES LENGTHY ARTICLES USING NATURAL LANGUAGE PROCESSING TECHNIQUES.\n",
+    "#DELIVERABLE: A PYTHON SCRIPT SHOWCASING INPUT TEXT AND CONCISE SUMMARIES.\n",
+    "#Import the 'pipeline' function from the 'transformers' library, which provides a simple interface for various NLP tasks.\n",
+    "from transformers import pipeline"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "d376092d-51ce-4eb8-b170-7897f57b76a3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Define a function 'summarize_article' that takes an article's text as input and returns a summarized version.\n",
+    "# The summary will have a maximum length of 'max_length' and a minimum length of 'min_length'.\n",
+    "def summarize_article(article_text, max_length=130, min_length=30):\n",
+    "    \"\"\"\n",
+    "    Summarizes the given article text using a pre-trained model from Hugging Face.\n",
+    "\n",
+    "    Parameters:\n",
+    "    article_text (str): The text of the article to summarize.\n",
+    "    max_length (int): The maximum length of the summary.\n",
+    "    min_length (int): The minimum length of the summary.\n",
+    "\n",
+    "    Returns:\n",
+    "    str: The summarized text.\n",
+    "    \"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "cda0d815-e814-41ac-9569-0269609e6b1d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "No model was supplied, defaulted to sshleifer/distilbart-cnn-12-6 and revision a4f8f3e (https://huggingface.co/sshleifer/distilbart-cnn-12-6).\n",
+      "Using a pipeline without specifying a model name and revision in production is not recommended.\n",
+      "Device set to use cpu\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Create a summarization pipeline using the 'pipeline' function from the transformers library,\n",
+    "# which will be used to generate summaries of text input.\n",
+    "summarizer = pipeline(\"summarization\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "fac6a6c3-4bda-4046-b469-83bcad851368",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Check if the script is being run as the main program. \n",
+    "# This block will execute only if the script is not being imported as a module in another script.\n",
+    "if __name__ == \"__main__\":\n",
+    "    # Example input text (you can replace this with any lengthy article)\n",
+    "    article_text = \"\"\"\n",
+    "    A computer is a data-based electronic machine initially invented by Charles Babbage back in 1837.\n",
+    "    It is one of the greatest advances in modern technology. The computer works when somebody who is operating the computer, \n",
+    "    is giving instructions to it. The information is stored in the computer’s storage, \n",
+    "    and we can access it easily whenever needed. With the computer’s discovery, \n",
+    "    man has entered a new period of improvement. In this modern era, lives would be impossible without owning a computer\n",
+    "    \"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "7d34fdc7-6dbf-40d9-9a3f-6a1eca4e56e0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original Article:\n",
+      " \n",
+      "    A computer is a data-based electronic machine initially invented by Charles Babbage back in 1837.\n",
+      "    It is one of the greatest advances in modern technology. The computer works when somebody who is operating the computer, \n",
+      "    is giving instructions to it. The information is stored in the computer’s storage, \n",
+      "    and we can access it easily whenever needed. With the computer’s discovery, \n",
+      "    man has entered a new period of improvement. In this modern era, lives would be impossible without owning a computer\n",
+      "    \n",
+      "\n",
+      "Summary:\n",
+      " None\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "# Summarize the article\n",
+    "summary = summarize_article(article_text)\n",
+    "    \n",
+    "# Print the original article and the summary\n",
+    "print(\"Original Article:\\n\", article_text)\n",
+    "print(\"\\nSummary:\\n\", summary)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
